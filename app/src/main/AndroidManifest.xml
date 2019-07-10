@@ -19,7 +19,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".mainactivity.MainActivity"
+            android:name=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

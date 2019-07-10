@@ -1,14 +1,13 @@
 package com.example.healthboss2;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.healthboss2.dao.DAO;
 import com.example.healthboss2.modelo.Paciente;
@@ -30,16 +29,14 @@ public class Consulta extends AppCompatActivity {
                 String cpf = ed_cpf.getText().toString();
                 if (ValidaCPF.isCPF(cpf)) {
                     Paciente paciente = dao.buscarCadastroPaciente(cpf);
-
-//                    Log.i("resultado", paciente.getIdPaciente().toString());
                     if (paciente.getIdPaciente() != null) {
                         Intent intent = new Intent(Consulta.this, Login.class);
-//                        finish();
+                        finish();
                         intent.putExtra("cpf", cpf);
                         startActivity(intent);
                     } else {
                         Intent intent = new Intent(Consulta.this, Cadastro.class);
-//                        finish();
+                        finish();
                         intent.putExtra("cpf", cpf);
                         startActivity(intent);
                     }

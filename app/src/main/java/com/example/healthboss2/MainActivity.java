@@ -1,5 +1,9 @@
 package com.example.healthboss2;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.MenuItem;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,21 +12,9 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.Toast;
-
 import com.example.healthboss2.dao.DAO;
 import com.example.healthboss2.modelo.Paciente;
-import com.example.healthboss2.modelo.Consulta;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
-
-import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -78,16 +70,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
                 bundle.putString("cpf",cpf);
                 fragment.setArguments(bundle);
-                transaction.replace(R.id.fragment_container,fragment).commit();
+                transaction.add(R.id.fragment_container, fragment).commit();
                 break;
             case R.id.nav_perfil:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new PerfilFrag()).commit();
+                getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, new PerfilFrag()).commit();
                 break;
             case R.id.nav_configuracoes:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ConfigFrag()).commit();
+                getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, new ConfigFrag()).commit();
                 break;
             case R.id.nav_sobre:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new SobreFrag()).commit();
+                getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, new SobreFrag()).addToBackStack(null).commit();
                 break;
         }
         drawer.closeDrawer(GravityCompat.START);
